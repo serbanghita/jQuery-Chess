@@ -16,7 +16,9 @@
                 x : [1,2,3,4,5,6,7,8],
                 y : [1,2,3,4,5,6,7,8],
                 xLiteral : ['a','b','c','d','e','f','g','h'],
-                appendTo: document.body
+                appendTo: document.body,
+                type: 'matrix',
+                position: null
             }, options);
             
             $piece = $('<img/>').attr({src: 'images/1x1.png', width: $settings.squareSize, height: $settings.squareSize}).addClass('draggablePiece');
@@ -48,7 +50,7 @@
             $boardInner = $('<div></div>').attr({id:'chessBoardInner'}).addClass('chessBoardInner');        
                         
             this.buildBoard();
-            this.buildPosition(false, 'matrix');
+            this.buildPosition(false, $settings.type, $settings.position);
             this.drawBoard();
             
         }
@@ -119,7 +121,7 @@
                         this._arrangeMatrixPosition(position);
                         break;
                     case 'fen':
-                        // @todo: implement FEN
+                        this._arrangeMatrixPosition(this._fenToPosition(position));
                         break;
                     default:
                         alert(1);
@@ -150,10 +152,32 @@
             });
             
         }
+
+        this._fenToPosition = function(fen){
+            var position = [];
+            var rows = fen.split('/');
+            for(var i=0; i<rows.length; i++){
+                var row = rows[i]
+                var cells = row.split('');
+                var positionRow = [];
+                for(var j=0; j<cells.length; j++){
+                    if(Number(cells[j])){
+                        for(var k=0; k<Number(cells[j]); k++){
+                            positionRow.push(0);
+                        }
+                    } else if (cells[j] == cells[j].toUpperCase()){
+                        positionRow.push('w' + cells[j].toLowerCase());
+                    } else if (cells[j] == cells[j].toLowerCase()){
+                        positionRow.push('b' + cells[j].toLowerCase());
+                    }
+                }
+                position.push(positionRow);
+            }
+            return position;
+        }
         
         // Private function that arranges the board by matrix.
         this._arrangeMatrixPosition = function(position){
-            
             if(!position){
                 
                 // Start position.
@@ -169,21 +193,15 @@
                 ];
             
             }   
-            
             position.reverse();
                        
             for(y in position){
-                
                 for(x in position[y]){
-                    
-                    if(position[y][x] === 0){break;}
-                    
-                    $boardInner.find('#pos'+Number(parseInt(x)+1)+Number(parseInt(y)+1)).append($pieces[position[y][x]].clone());
-                   
+                    if(position[y][x] != 0){
+                        $boardInner.find('#pos'+Number(parseInt(x)+1)+Number(parseInt(y)+1)).append($pieces[position[y][x]].clone());
+                    }
                 }
-                
             }
-            
         }
         
         // @todo: Append to element.
