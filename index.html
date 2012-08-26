@@ -12,8 +12,10 @@
         <script type="text/javascript" src="js/jquery.chess.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-               $.fn.chess(); 
-               
+               $.fn.chess({
+                 type: 'fen',
+                 position: '4k3/R7/1R6/8/8/8/8/4K3'
+               });
             });
         </script>
         <style type="text/css">
