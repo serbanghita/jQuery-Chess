@@ -2,14 +2,15 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Chess</title>        
+        <title>jQuery Chess Demo</title>
         <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-	<script src="js/jquery.ui.core.js"></script>
-	<script src="js/jquery.ui.widget.js"></script>
-	<script src="js/jquery.ui.mouse.js"></script>
-	<script src="js/jquery.ui.draggable.js"></script>  
+    	<script src="js/jquery.ui.core.js"></script>
+    	<script src="js/jquery.ui.widget.js"></script>
+    	<script src="js/jquery.ui.mouse.js"></script>
+    	<script src="js/jquery.ui.draggable.js"></script>
         <script src="js/jquery.ui.droppable.js"></script>
         <script type="text/javascript" src="js/jquery.chess.js"></script>
+
         <script type="text/javascript">
             $(document).ready(function(){
                $.fn.chess({
@@ -18,16 +19,19 @@
                });
             });
         </script>
+
         <style type="text/css">
             body { font-family: Arial, sans-serif; }
+
+            /* board */
             #chessBoard { background:#EDC9A2 url('images/45.gif') left top; border:1px solid #D3A36A; }
             .squareNotation { padding-left:1px; z-index:1; }
             .square.oddX.evenY .squareNotation,
             .square.evenX.oddY .squareNotation { color:#D3A36A; }
             .square.evenX.evenY .squareNotation,
-            .square.oddX.oddY .squareNotation { color:#EDC9A2; } 
+            .square.oddX.oddY .squareNotation { color:#EDC9A2; }
             .square.highlight { background-color:rgba(193,225,181, 0.3); }
-            
+
             /* pieces */
             .draggablePiece { z-index: 2; cursor:pointer; }
             .wp { background: url('images/wp.png') no-repeat; }
@@ -36,16 +40,16 @@
             .wb { background: url('images/wb.png') no-repeat; }
             .wk { background: url('images/wk.png') no-repeat; }
             .wq { background: url('images/wq.png') no-repeat; }
-            
+
             .bp { background: url('images/bp.png') no-repeat; }
             .br { background: url('images/br.png') no-repeat; }
             .bn { background: url('images/bn.png') no-repeat; }
             .bb { background: url('images/bb.png') no-repeat; }
             .bk { background: url('images/bk.png') no-repeat; }
-            .bq { background: url('images/bq.png') no-repeat; }            
+            .bq { background: url('images/bq.png') no-repeat; }
         </style>
     </head>
     <body>
-        
+
     </body>
 </html>
