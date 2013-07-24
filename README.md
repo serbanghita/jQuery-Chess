@@ -2,6 +2,8 @@
 
 > jQuery Chess is a jQuery plugin that builds a simple yet flexible chess board with pieces. It also supports FEN notation thanks to @sathish316
 
+For a much more <b>complete chessboard</b> project check Chris Oakman's <a href="https://github.com/oakmac/chessboardjs">chessboardjs</a>!
+
 ### History
 My name is Serban Ghita and I'm a web developer and a former professional chess player. I love chess and I like to play on Chess.com
 I wanted to create my own chess board so I can discuss chess positions on my blog.
